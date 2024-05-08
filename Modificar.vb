@@ -1,8 +1,14 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Configuration
+Imports System.Data.SqlClient
 
 Public Class Modificar
-    Private conexion As New SqlConnection("server=LAPTOP-L743C0KB; database=Panaderia; integrated security = true")
     Private Sub bo_bus_Click(sender As Object, e As EventArgs) Handles bo_bus.Click
+        Dim conexion As SqlConnection
+
+        Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+        conexion = New SqlConnection(connectionString)
+
         conexion.Open()
 
         Dim cod As String = cod_txt.Text
@@ -28,6 +34,12 @@ Public Class Modificar
     End Sub
 
     Private Sub bo_mod_Click(sender As Object, e As EventArgs) Handles bo_mod.Click
+        Dim conexion As SqlConnection
+
+        Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+        conexion = New SqlConnection(connectionString)
+
         conexion.Open()
 
         Dim cod As Integer = cod_txt.Text

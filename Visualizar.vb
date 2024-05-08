@@ -1,4 +1,6 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Configuration
+Imports System.Data.SqlClient
+
 Public Class Visualizar
     Private Sub bo_salir_Click(sender As Object, e As EventArgs) Handles bo_salir.Click
         Menuu.Show()
@@ -22,7 +24,11 @@ Public Class Visualizar
                 info_lb.Text = "ID - Nombre - Tamaño - Cantidad - Precio"
 
                 Dim conexion As SqlConnection
-                conexion = New SqlConnection("server=LAPTOP-L743C0KB; database=Panaderia; integrated security = true")
+
+                Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+                conexion = New SqlConnection(connectionString)
+
                 conexion.Open()
 
                 Dim cadena As String = "Select ID, Nombre, Tamaño, Cantidad, Precio from Productos"
@@ -52,7 +58,10 @@ Public Class Visualizar
                 info_lb.Text = "ID - Nombre - RFC - Producto - Fecha - Precio - Cantidad - Descuento - Subtotal - IVA - Total"
 
                 Dim conexion As SqlConnection
-                conexion = New SqlConnection("server=LAPTOP-L743C0KB; database=Panaderia; integrated security = true")
+
+                Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+                conexion = New SqlConnection(connectionString)
 
                 conexion.Open()
 

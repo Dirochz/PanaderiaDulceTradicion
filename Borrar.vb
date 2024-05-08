@@ -1,13 +1,18 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Configuration
+Imports System.Data.SqlClient
 Public Class Borrar
-    Private conexion As New SqlConnection("server=LAPTOP-L743C0KB; database=Panaderia; integrated security = true")
-
     Private Sub boMenu_Click(sender As Object, e As EventArgs) Handles boMenu.Click
         Menuu.Show()
         Me.Hide()
     End Sub
 
     Private Sub bo_Buscar_Click(sender As Object, e As EventArgs) Handles bo_Buscar.Click
+        Dim conexion As SqlConnection
+
+        Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+        conexion = New SqlConnection(connectionString)
+
         conexion.Open()
 
         Dim cod As String = codigo_txt.Text
@@ -34,6 +39,12 @@ Public Class Borrar
     End Sub
 
     Private Sub bo_borrar_Click(sender As Object, e As EventArgs) Handles bo_borrar.Click
+        Dim conexion As SqlConnection
+
+        Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+        conexion = New SqlConnection(connectionString)
+
         conexion.Open()
 
         Dim cod As String = codigo_txt.Text

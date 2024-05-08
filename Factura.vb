@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Configuration
+Imports System.Data.SqlClient
 
 Public Class Factura
 
@@ -10,11 +11,9 @@ Public Class Factura
 
         Dim adapter As SqlDataAdapter
 
-        Dim conexion As String
-
         Dim Data = New DataSet
 
-        conexion = "server=LAPTOP-L743C0KB; database=Panaderia; integrated security = true"
+        Dim conexion As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
 
         strcomando = "Select ID,Nombre from Productos"
 
@@ -62,7 +61,9 @@ Public Class Factura
 
         Dim conexion As SqlConnection
 
-        conexion = New SqlConnection("server=LAPTOP-L743C0KB; database=Panaderia; integrated security = true")
+        Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+        conexion = New SqlConnection(connectionString)
 
         conexion.Open()
 
@@ -131,7 +132,9 @@ Public Class Factura
 
             Dim conexion As SqlConnection
 
-            conexion = New SqlConnection("server=LAPTOP-L743C0KB ; database=Panaderia; integrated security = true")
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+            conexion = New SqlConnection(connectionString)
 
             conexion.Open()
 

@@ -10,7 +10,7 @@
 
         clave = Contraseña.Text
 
-        If usua = "Usuario" Then
+        If usua = "Admin" Then
             If clave = "usuario" Then
                 MsgBox("El usuario es correcto")
 

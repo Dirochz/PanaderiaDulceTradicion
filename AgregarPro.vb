@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Configuration
+
 Public Class AgregarPro
     Private Sub Menu_Click(sender As Object, e As EventArgs) Handles Menu.Click
         Menuu.Show()
@@ -8,7 +10,9 @@ Public Class AgregarPro
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim conexion As SqlConnection
 
-        conexion = New SqlConnection("server=LAPTOP-L743C0KB; database=Panaderia; integrated security = true")
+        Dim connectionString As String = ConfigurationManager.ConnectionStrings("PanaderiaDulceTradicion.My.MySettings.PasteleriaConnectionString").ConnectionString
+
+        conexion = New SqlConnection(connectionString)
         conexion.Open()
 
         Dim nom As String = Producto.Text
